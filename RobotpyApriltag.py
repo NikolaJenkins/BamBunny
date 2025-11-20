@@ -42,12 +42,13 @@ aprilTagDetector.addFamily("tag32h11", 3)
 
 # create the PoseEstimator configuration
 poseEstimatorConfig = robotpy_apriltag.AprilTagPoseEstimator.Config(
-    0.1651,             #tag size in meters
+    0.1651,  #tag size in meters
     269.72,  #Fx: x focal length in mm
     269.04,  #Fy: y focal length in mm
     175.09,  #Cx: x focal center (based on 320x240 resolution)
     110.03, #Cy: y focal center (based on 320x240 resolution)
 )
+
 # create the PoseEstimator
 poseEstimator = robotpy_apriltag.AprilTagPoseEstimator(poseEstimatorConfig)
 
