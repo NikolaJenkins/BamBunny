@@ -1,5 +1,6 @@
 import pigpio
 import time
+import Constants
 
 def drivetrain_init():
     pi = pigio.pi()
@@ -13,16 +14,16 @@ if not pi.connected:
 # 1000 - 1500 -> reverse
 # 1500 - 2000 -> forward
 def drive_forward(percent: int):
-    pi.set_PWM_dutycycle(Constants.LEFT_DRIVE_PIN, ((1500 + 500 * percent) / PULSE_LENGTH) * 100)
-    pi.set_PWM_dutycycle(Constants.RIGHT_DRIVE_PIN, ((1500 + 500 * percent) / PULSE_LENGTH) * 100)
+    pi.set_PWM_dutycycle(Constants.LEFT_DRIVE_PIN, ((1500 + 500 * percent) / Constants.ConstantsPULSE_LENGTH) * 100)
+    pi.set_PWM_dutycycle(Constants.RIGHT_DRIVE_PIN, ((1500 + 500 * percent) / Constants.ConstantsPULSE_LENGTH) * 100)
 
 def turn_left(percent: int):
-    pi.set_PWM_dutycycle(Constants.LEFT_DRIVE_PIN, ((1500 - 500 * percent) / PULSE_LENGTH) * 100)
-    pi.set_PWM_dutycycle(Constants.RIGHT_DRIVE_PIN, ((1500 + 500 * percent) / PULSE_LENGTH) * 100)
+    pi.set_PWM_dutycycle(Constants.LEFT_DRIVE_PIN, ((1500 - 500 * percent) / Constants.ConstantsPULSE_LENGTH) * 100)
+    pi.set_PWM_dutycycle(Constants.RIGHT_DRIVE_PIN, ((1500 + 500 * percent) / Constants.ConstantsPULSE_LENGTH) * 100)
 
 def turn_right(percent: int):
-    pi.set_PWM_dutycycle(Constants.LEFT_DRIVE_PIN, ((1500 + 500 * percent) / PULSE_LENGTH) * 100)
-    pi.set_PWM_dutycycle(Constants.RIGHT_DRIVE_PIN, ((1500 - 500 * percent) / PULSE_LENGTH) * 100)
+    pi.set_PWM_dutycycle(Constants.LEFT_DRIVE_PIN, ((1500 + 500 * percent) / Constants.ConstantsPULSE_LENGTH) * 100)
+    pi.set_PWM_dutycycle(Constants.RIGHT_DRIVE_PIN, ((1500 - 500 * percent) / Constants.ConstantsPULSE_LENGTH) * 100)
 
 def align_to_tag():
     kp = -0.1
