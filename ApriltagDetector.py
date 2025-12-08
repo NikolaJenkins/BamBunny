@@ -51,7 +51,7 @@ def apriltag_periodic():
             cv2.line(image, ptB, ptC, (0, 255, 0), 2)
             cv2.line(image, ptC, ptD, (0, 255, 0), 2)
             cv2.line(image, ptD, ptA, (0, 255, 0), 2)
-a
+
             center_x = r.center[0]
             tx = results.camera_params[2] - center_x
     
