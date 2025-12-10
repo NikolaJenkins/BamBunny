@@ -1,4 +1,6 @@
 # from approxeng.input import CenteredAxis, Controller
+import evdev
+from evdev import InputDevice, categorize, ecodes
 import ApriltagDetector
 from Drivetrain import Drivetrain
 from Intake import Intake
@@ -7,6 +9,7 @@ import time
 import pigpio
 
 pi = pigpio.pi()
+device = evdev.InputDevice('/dev/input/event4')
 
 def robot_init():
     # ApriltagDetector.apriltag_init()
@@ -15,6 +18,10 @@ def robot_init():
     Shooter.shooter_init(pi)
 
 def test():
+    print(device)
+    for event in device.read_loop():
+        if event.type == evdev.ecodes.EV_KEY:
+            print(evdev.categorize(event))
     Intake.intake(pi)
     Shooter.shoot(pi)
     time.sleep(5)
