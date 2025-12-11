@@ -9,7 +9,11 @@ import time
 import pigpio
 
 pi = pigpio.pi()
-device = evdev.InputDevice('/dev/input/event4')
+try:
+    controller = evdev.InputDevice('/dev/input/event4')
+except FileNotFoundError:
+    print("Controller not found. Try different file path or reconnect the controller.")
+    exit()
 
 def robot_init():
     # ApriltagDetector.apriltag_init()
@@ -18,10 +22,10 @@ def robot_init():
     Shooter.shooter_init(pi)
 
 def test():
-    print(device)
-    for event in device.read_loop():
-        if event.type == evdev.ecodes.EV_KEY:
-            print(evdev.categorize(event))
+    print(controller)
+    # for event in controller.read_loop():
+    #     if event.type == evdev.ecodes.EV_KEY:
+    #         print(evdev.categorize(event))
     Intake.intake(pi)
     Shooter.shoot(pi)
     time.sleep(5)
@@ -30,18 +34,10 @@ def test():
 
 robot_init()
 test()
-
-
-    # controller = Controller(
-    #     index=0, # Change if you have multiple controllers
-    #     # Other options depending on connection type
-    # )
-
-# while True:
-    # read controller state
-    # controller.check_presses()
-    # controller.check_releases()
-
-    
+for event in controller.read_loop():
+    if event.type == evdev.ecodes.EV_KEY:
+        print(evdev.categorize(event))
+# for event in controller.read_loop():
+#     if event == 
 
     # apriltag_periodic()

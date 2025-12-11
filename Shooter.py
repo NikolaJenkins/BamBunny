@@ -5,8 +5,10 @@ class Shooter():
 
     @staticmethod
     def shooter_init(pigpiod):
-        pigpiod.set_mode(Constants.SHOOTER_PIN, pigpio.OUTPUT)
-        pigpiod.set_PWM_range(Constants.SHOOTER_PIN, Constants.RANGE)
+        pigpiod.set_mode(Constants.UPPER_SHOOTER_PIN, pigpio.OUTPUT)
+        pigpiod.set_PWM_range(Constants.UPPER_SHOOTER_PIN, Constants.RANGE)
+        pigpiod.set_mode(Constants.LOWER_SHOOTER_PIN, pigpio.OUTPUT)
+        pigpiod.set_PWM_range(Constants.LOWER_SHOOTER_PIN, Constants.RANGE)
         Shooter.stop_shooter(pigpiod)
 
     @staticmethod
@@ -15,12 +17,15 @@ class Shooter():
 
     @staticmethod
     def shoot(pigpiod, percent: float = 0.4):
-        pigpiod.set_PWM_dutycycle(Constants.SHOOTER_PIN, Shooter.percent_to_pulse(percent))
+        pigpiod.set_PWM_dutycycle(Constants.UPPER_SHOOTER_PIN, Shooter.percent_to_pulse(percent))
+        pigpiod.set_PWM_dutycycle(Constants.LOWER_SHOOTER_PIN, Shooter.percent_to_pulse(-percent))
 
     @staticmethod
     def unshoot(pigpiod):
-        pigpiod.set_PWM_dutycycle(Constants.SHOOTER_PIN, Shooter.percent_to_pulse(-0.2))
+        pigpiod.set_PWM_dutycycle(Constants.UPPER_SHOOTER_PIN, Shooter.percent_to_pulse(-0.2))
+        pigpiod.set_PWM_dutycycle(Constants.LOWER_SHOOTER_PIN, Shooter.percent_to_pulse(0.2))
 
     @staticmethod
     def stop_shooter(pigpiod):
-        pigpiod.set_PWM_dutycycle(Constants.SHOOTER_PIN, Shooter.percent_to_pulse(0))
+        pigpiod.set_PWM_dutycycle(Constants.UPPER_SHOOTER_PIN, Shooter.percent_to_pulse(0))
+        pigpiod.set_PWM_dutycycle(Constants.LOWER_SHOOTER_PIN, Shooter.percent_to_pulse(0))
