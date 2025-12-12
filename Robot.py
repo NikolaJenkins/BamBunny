@@ -1,7 +1,7 @@
 # from approxeng.input import CenteredAxis, Controller
 import evdev
 from evdev import InputDevice, categorize, ecodes
-import ApriltagDetector
+# import ApriltagDetector
 from Drivetrain import Drivetrain
 from Intake import Intake
 from Shooter import Shooter

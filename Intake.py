@@ -7,6 +7,7 @@ class Intake():
     def intake_init(pigpiod):
         pigpiod.set_mode(Constants.INTAKE_PIN, pigpio.OUTPUT)
         pigpiod.set_PWM_range(Constants.INTAKE_PIN, Constants.RANGE)
+        pigpiod.set_PWM_frequency(Constants.INTAKE_PIN, Constants.FREQUENCY)
         Intake.stop_intake(pigpiod)
 
     @staticmethod

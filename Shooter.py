@@ -7,8 +7,10 @@ class Shooter():
     def shooter_init(pigpiod):
         pigpiod.set_mode(Constants.UPPER_SHOOTER_PIN, pigpio.OUTPUT)
         pigpiod.set_PWM_range(Constants.UPPER_SHOOTER_PIN, Constants.RANGE)
+        pigpiod.set_PWM_frequency(Constants.UPPER_SHOOTER_PIN, Constants.FREQUENCY)
         pigpiod.set_mode(Constants.LOWER_SHOOTER_PIN, pigpio.OUTPUT)
         pigpiod.set_PWM_range(Constants.LOWER_SHOOTER_PIN, Constants.RANGE)
+        pigpiod.set_PWM_frequency(Constants.LOWER_SHOOTER_PIN, Constants.FREQUENCY)
         Shooter.stop_shooter(pigpiod)
 
     @staticmethod
