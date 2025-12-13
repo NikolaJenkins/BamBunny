@@ -48,7 +48,22 @@ for event in controller.read_loop():
     if event.type == ecodes.EV_KEY or event.type == ecodes.EV_ABS:
         key = categorize(event)
         # print(key.scancode, key.keystate)
-        print(key)
+        # print(key)
+    if event.type == ecodes.EV_ABS:
+        if ecodes.ABS[event.code] == 'ABS_Y':
+            if event.value == 0:
+                print("drive forward")
+            elif event.value == 255:
+                print("drive backward")
+            else:
+                print("stop")
+        if ecodes.ABS[event.code] == 'ABS_X':
+            if event.value == 0:
+                print("turn left")
+            elif event.value == 255:
+                print("turn right")
+            else:
+                print("stop")
 #     # if event.type == ecodes.EV_KEY or event.type == ecodes.EV_ABS:
 #         # key = categorize(event)
 #         # print(key)
