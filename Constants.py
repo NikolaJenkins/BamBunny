@@ -1,7 +1,7 @@
 class Constants:
     RIGHT_DRIVE_PIN = 2
     LEFT_DRIVE_PIN = 3
-    INTAKE_PIN = 0
+    INTAKE_PIN = 6
     UPPER_SHOOTER_PIN = 4
     LOWER_SHOOTER_PIN = 5
     FREQUENCY = 100 # hz
