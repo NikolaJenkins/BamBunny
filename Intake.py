@@ -8,7 +8,7 @@ class Intake():
         pigpiod.set_mode(Constants.INTAKE_PIN, pigpio.OUTPUT)
         pigpiod.set_PWM_range(Constants.INTAKE_PIN, Constants.RANGE)
         pigpiod.set_PWM_frequency(Constants.INTAKE_PIN, Constants.FREQUENCY)
-        Intake.stop_intake(pigpiod)
+        # Intake.stop_intake(pigpiod)
 
     @staticmethod
     def percent_to_pulse(percentage: float) -> int:

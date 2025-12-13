@@ -15,6 +15,11 @@ except FileNotFoundError:
     print("Controller not found. Try different file path or reconnect the controller.")
     exit()
 
+# controller input values
+buttons = [("a", 305), ("b", 306), ("y", 307), ("x", 304)]
+bumpers = [("left", 308), ("right", 309)]
+
+
 def robot_init():
     # ApriltagDetector.apriltag_init()
     Drivetrain.drivetrain_init(pi)
@@ -37,6 +42,8 @@ test()
 for event in controller.read_loop():
     if event.type == evdev.ecodes.EV_KEY | event.type == evdev.ecodes.EV_ABS:
         print(evdev.categorize(event))
+        if event.code not in buttons[1] or event.code not in bumpers[1]:
+            print(evdev.categorize(event).scancode)
 # for event in controller.read_loop():
 #     if event == 
 
