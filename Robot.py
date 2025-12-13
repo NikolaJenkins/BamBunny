@@ -35,7 +35,7 @@ def test():
 robot_init()
 test()
 for event in controller.read_loop():
-    if event.type == evdev.ecodes.EV_KEY:
+    if event.type == evdev.ecodes.EV_KEY | event.type == evdev.ecodes.EV_ABS:
         print(evdev.categorize(event))
 # for event in controller.read_loop():
 #     if event == 
