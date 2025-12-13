@@ -41,9 +41,19 @@ test()
 for event in controller.read_loop():
     if event.type == ecodes.EV_KEY or event.type == ecodes.EV_ABS:
         key = categorize(event)
-        print(key)
+        # print(key)
     if event.code == buttons["a"] and event.value == 1:
-        print("shoot")
+        print("shooter")
+    else:
+        print("stop shooting")
+    if event.code == buttons["b"] and event.value == 1:
+        print("intake")
+    else:
+        print("stop intaking")
+    if event.code == buttons["y"] and event.value == 1:
+        print("outtake")
+    else:
+        print("stop intaking")
         # if event.code not in buttons[1] or event.code not in bumpers[1]:
         #     print(key.scancode)
 # for event in controller.read_loop():
