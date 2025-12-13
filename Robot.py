@@ -47,7 +47,8 @@ test()
 for event in controller.read_loop():
     if event.type == ecodes.EV_KEY:
         key = categorize(event)
-        print(key.scancode, key.keystate)
+        # print(key.scancode, key.keystate)
+        print(key)
 #     # if event.type == ecodes.EV_KEY or event.type == ecodes.EV_ABS:
 #         # key = categorize(event)
 #         # print(key)
