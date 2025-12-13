@@ -16,9 +16,8 @@ except FileNotFoundError:
     exit()
 
 # controller input values
-buttons = [("a", 305), ("b", 306), ("y", 307), ("x", 304)]
-bumpers = [("left", 308), ("right", 309)]
-
+buttons = {"a": 305, "b": 306, "y": 307, "x": 304}
+bumpers = {"left", 308, "right", 309}
 
 def robot_init():
     # ApriltagDetector.apriltag_init()
@@ -40,11 +39,13 @@ def test():
 robot_init()
 test()
 for event in controller.read_loop():
-    if event.type == evdev.ecodes.EV_KEY or event.type == evdev.ecodes.EV_ABS:
-        key = evdev.categorize(event)
+    if event.type == ecodes.EV_KEY or event.type == ecodes.EV_ABS:
+        key = categorize(event)
         print(key)
-        if event.code not in buttons[1] or event.code not in bumpers[1]:
-            print(key.scancode)
+    if event.code == buttons["a"] and event.value == 1:
+        print("shoot")
+        # if event.code not in buttons[1] or event.code not in bumpers[1]:
+        #     print(key.scancode)
 # for event in controller.read_loop():
 #     if event == 
 
