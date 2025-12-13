@@ -28,10 +28,10 @@ def robot_init():
 
 def test():
     print(controller)
-    print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
+    # print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
     Intake.intake(pi)
     time.sleep(2)
-    print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
+    # print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
     Intake.stop_intake(pi)
     # for event in controller.read_loop():
     #     if event.type == evdev.ecodes.EV_KEY:
