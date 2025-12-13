@@ -53,52 +53,54 @@ for event in controller.read_loop():
         if ecodes.ABS[event.code] == 'ABS_Y':
             if event.value == 0:
                 print("drive forward")
+                Drivetrain.drive_forward()
             elif event.value == 255:
                 print("drive backward")
+                Drivetrain.drive_backward()
             else:
                 print("stop")
+                Drivetrain.stop_driving()
         if ecodes.ABS[event.code] == 'ABS_X':
             if event.value == 0:
                 print("turn left")
+                Drivetrain.turn_left()
             elif event.value == 255:
                 print("turn right")
+                Drivetrain.turn_right()
             else:
                 print("stop")
+                Drivetrain.stop_driving()
 #     # if event.type == ecodes.EV_KEY or event.type == ecodes.EV_ABS:
 #         # key = categorize(event)
 #         # print(key)
-#     if event.code == buttons["a"]:
-#         if event.value == 1:
-#             # print("shooter")
-#             Shooter.shoot(pi, .5)
-#             print(pi.get_PWM_dutycycle(Constants.UPPER_SHOOTER_PIN), 
-#                   pi.get_PWM_dutycycle(Constants.LOWER_SHOOTER_PIN))
-#         else:
-#             # print("stop shooting")
-#             Shooter.stop_shooter(pi)
-#             print(pi.get_PWM_dutycycle(Constants.UPPER_SHOOTER_PIN), 
-#                   pi.get_PWM_dutycycle(Constants.LOWER_SHOOTER_PIN))
-#     if event.code == buttons["b"]:
-#         if event.value == 1:
-#             # print("intake")
-#             Intake.intake(pi)
-#             print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
-#         else:
-#             # print("stop intaking")
-#             Intake.stop_intake(pi)
-#             print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
-#     if event.code == buttons["y"]: 
-#         if event.value == 1:
-#             # print("outtake")
-#             Intake.outtake(pi)
-#             print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
-#         else:
-#             # print("stop outtaking")
-#             Intake.stop_intake(pi)
-#             print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
-#         # if event.code not in buttons[1] or event.code not in bumpers[1]:
-#         #     print(key.scancode)
-# # for event in controller.read_loop():
-#     if event == 
+    if event.code == buttons["a"]:
+        if event.value == 1:
+            print("shoot")
+            Shooter.shoot(pi, .5)
+            print(pi.get_PWM_dutycycle(Constants.UPPER_SHOOTER_PIN), 
+                  pi.get_PWM_dutycycle(Constants.LOWER_SHOOTER_PIN))
+        else:
+            print("stop shooting")
+            Shooter.stop_shooter(pi)
+            print(pi.get_PWM_dutycycle(Constants.UPPER_SHOOTER_PIN), 
+                  pi.get_PWM_dutycycle(Constants.LOWER_SHOOTER_PIN))
+    if event.code == buttons["b"]:
+        if event.value == 1:
+            print("intake")
+            Intake.intake(pi)
+            print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
+        else:
+            print("stop intaking")
+            Intake.stop_intake(pi)
+            print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
+    if event.code == buttons["y"]: 
+        if event.value == 1:
+            print("outtake")
+            Intake.outtake(pi)
+            print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
+        else:
+            print("stop outtaking")
+            Intake.stop_intake(pi)
+            print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
 
     # apriltag_periodic()
