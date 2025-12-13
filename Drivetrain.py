@@ -24,7 +24,12 @@ class Drivetrain():
     @staticmethod
     def drive_forward(percent: float, pigpiod):
         pigpiod.set_PWM_dutycycle(Constants.LEFT_DRIVE_PIN, Drivetrain.percent_to_pulse(percent))
-        pigpiod.pi.set_PWM_dutycycle(Constants.RIGHT_DRIVE_PIN, Drivetrain.percent_to_pulse(percent))
+        pigpiod.set_PWM_dutycycle(Constants.RIGHT_DRIVE_PIN, Drivetrain.percent_to_pulse(percent))
+
+    @staticmethod
+    def drive_backward(percent: float, pigpiod):
+        pigpiod.set_PWM_dutycycle(Constants.LEFT_DRIVE_PIN, Drivetrain.percent_to_pulse(-percent))
+        pigpiod.set_PWM_dutycycle(Constants.RIGHT_DRIVE_PIN, Drivetrain.percent_to_pulse(-percent))
 
     @staticmethod
     def turn_left(percent: float, pigpiod):

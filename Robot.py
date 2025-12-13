@@ -53,23 +53,23 @@ for event in controller.read_loop():
         if ecodes.ABS[event.code] == 'ABS_Y':
             if event.value == 0:
                 print("drive forward")
-                Drivetrain.drive_forward()
+                Drivetrain.drive_forward(.4, pi)
             elif event.value == 255:
                 print("drive backward")
-                Drivetrain.drive_backward()
+                Drivetrain.drive_backward(.4, pi)
             else:
                 print("stop")
-                Drivetrain.stop_driving()
+                Drivetrain.stop_driving(pi)
         if ecodes.ABS[event.code] == 'ABS_X':
             if event.value == 0:
                 print("turn left")
-                Drivetrain.turn_left()
+                Drivetrain.turn_left(.4, pi)
             elif event.value == 255:
                 print("turn right")
-                Drivetrain.turn_right()
+                Drivetrain.turn_right(.4, pi)
             else:
                 print("stop")
-                Drivetrain.stop_driving()
+                Drivetrain.stop_driving(pi)
 #     # if event.type == ecodes.EV_KEY or event.type == ecodes.EV_ABS:
 #         # key = categorize(event)
 #         # print(key)
