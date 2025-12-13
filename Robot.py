@@ -40,10 +40,11 @@ def test():
 robot_init()
 test()
 for event in controller.read_loop():
-    if event.type == evdev.ecodes.EV_KEY | event.type == evdev.ecodes.EV_ABS:
-        print(evdev.categorize(event))
+    if event.type == evdev.ecodes.EV_KEY or event.type == evdev.ecodes.EV_ABS:
+        key = evdev.categorize(event)
+        print(key)
         if event.code not in buttons[1] or event.code not in bumpers[1]:
-            print(evdev.categorize(event).scancode)
+            print(key.scancode)
 # for event in controller.read_loop():
 #     if event == 
 
