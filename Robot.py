@@ -5,6 +5,7 @@ from evdev import InputDevice, categorize, ecodes
 from Drivetrain import Drivetrain
 from Intake import Intake
 from Shooter import Shooter
+from Constants import Constants
 import time
 import pigpio
 
@@ -39,24 +40,38 @@ def test():
 robot_init()
 test()
 for event in controller.read_loop():
-    if event.type == ecodes.EV_KEY or event.type == ecodes.EV_ABS:
-        key = categorize(event)
+    # if event.type == ecodes.EV_KEY or event.type == ecodes.EV_ABS:
+        # key = categorize(event)
         # print(key)
     if event.code == buttons["a"]:
         if event.value == 1:
-            print("shooter")
+            # print("shooter")
+            Shooter.shoot(.5)
+            print(pi.get_PWM_dutycycle(Constants.UPPER_SHOOTER_PIN), 
+                  pi.get_PWM_dutycycle(Constants.LOWER_SHOOTER_PIN))
         else:
-            print("stop shooting")
+            # print("stop shooting")
+            Shooter.stop_shooter()
+            print(pi.get_PWM_dutycycle(Constants.UPPER_SHOOTER_PIN), 
+                  pi.get_PWM_dutycycle(Constants.LOWER_SHOOTER_PIN))
     if event.code == buttons["b"]:
         if event.value == 1:
-            print("intake")
+            # print("intake")
+            Intake.intake()
+            print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
         else:
-            print("stop intaking")
+            # print("stop intaking")
+            Intake.stop_intake()
+            print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
     if event.code == buttons["y"]: 
         if event.value == 1:
-            print("outtake")
+            # print("outtake")
+            Intake.outtake()
+            print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
         else:
-            print("stop intaking")
+            # print("stop outtaking")
+            Intake.stop_intake()
+            print(pi.get_PWM_dutycycle(Constants.INTAKE_PIN))
         # if event.code not in buttons[1] or event.code not in bumpers[1]:
         #     print(key.scancode)
 # for event in controller.read_loop():
