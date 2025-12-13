@@ -12,7 +12,7 @@ class Intake():
 
     @staticmethod
     def percent_to_pulse(percentage: float) -> int:
-        return ((1500 + 500 * percentage) // Constants.RANGE) * 100
+        return ((1500 + 500 * percentage) // Constants.PULSE_LENGTH) * 100
     
     @staticmethod
     def intake(pigpiod):
